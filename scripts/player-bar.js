@@ -15,8 +15,16 @@
     player.playPause(nextSong);
   });
 
+  setInterval( () => {
+    if (player.playState !== 'playing') { return; }
+    const currentTime = player.getTime();
+    const duration = player.getDuration();
+    const percent = (currentTime / duration) * 100;
+  }, 1000);
+
   $('button#previous').on('click', function() {
     if (player.playState !== 'playing') { return; }
+    if (previousSongIndex = currentSongIndex[1]) { return; }
 
     const currentSongIndex = album.songs.indexOf(player.currentlyPlaying);
     const previousSongIndex = currentSongIndex - 1;
